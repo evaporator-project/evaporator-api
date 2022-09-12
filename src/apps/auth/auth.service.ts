@@ -1,9 +1,6 @@
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common'
+import { Inject, Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
-import axios from 'axios'
-import { Repository } from 'typeorm'
 import {Model} from "mongoose";
-import {FileDocument} from "../core/schemas/file.schema";
 import {UserDocument} from "./schemas/user.schema";
 
 @Injectable()
