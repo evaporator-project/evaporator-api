@@ -12,8 +12,8 @@ WORKDIR /usr/src/app
 
 RUN node -v
 RUN npm install pnpm -g
-RUN pnp install
-RUN pnp run build
+RUN pnpm install
+RUN pnpm run build
 
 EXPOSE 8080
 CMD ["node", "dist/main.js" ]
