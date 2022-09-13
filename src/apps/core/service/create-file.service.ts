@@ -19,7 +19,7 @@ export class CreateFileService {
         let relationshipRequestId = ''
         // 请求 或者 eg
         if (nodeType === 1 || nodeType === 2) {
-            a = await this.requestModel.create({ endpoint: "123" });
+            a = await this.requestModel.create({ endpoint: "123",method:'GET',body:'' });
             console.log(a,'a')
             relationshipRequestId = String(a._id)
             // console.log(a.identifiers[0].id,'a')

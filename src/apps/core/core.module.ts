@@ -9,6 +9,7 @@ import {FileController} from "./controller/file.controller";
 import {GetCollectionTreeService} from "./service/get-collection-tree.service";
 import {RetrieveRequestService} from "./service/retrieve-request.service";
 import {UpdateRequestService} from "./service/update-request.service";
+import {DeleteFileService} from "./service/delete-file.service";
 
 @Module({
     imports: [DatabaseModule],
@@ -18,6 +19,7 @@ import {UpdateRequestService} from "./service/update-request.service";
         GetCollectionTreeService,
         RetrieveRequestService,
         UpdateRequestService,
+        DeleteFileService,
         ...fileProviders,
     ],
 })
