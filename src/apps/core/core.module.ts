@@ -10,6 +10,7 @@ import {GetCollectionTreeService} from "./service/get-collection-tree.service";
 import {RetrieveRequestService} from "./service/retrieve-request.service";
 import {UpdateRequestService} from "./service/update-request.service";
 import {DeleteFileService} from "./service/delete-file.service";
+import {UpdateFileService} from "./service/update-file.service";
 
 @Module({
     imports: [DatabaseModule],
@@ -20,6 +21,7 @@ import {DeleteFileService} from "./service/delete-file.service";
         RetrieveRequestService,
         UpdateRequestService,
         DeleteFileService,
+        UpdateFileService,
         ...fileProviders,
     ],
 })

@@ -6,7 +6,7 @@ import {RequestDocument} from "../schemas/request.schema";
 export class CreateFileService {
     constructor(
         @Inject('MONGODB_CONNECTION_FileRepository')
-        private coverageModel: Model<FileDocument>,
+        private fileModel: Model<FileDocument>,
         @Inject('MONGODB_CONNECTION_RequestRepository')
         private requestModel: Model<RequestDocument>,
     ) {}
@@ -19,13 +19,13 @@ export class CreateFileService {
         let relationshipRequestId = ''
         // 请求 或者 eg
         if (nodeType === 1 || nodeType === 2) {
-            a = await this.requestModel.create({ endpoint: "123",method:'GET',body:'' });
+            a = await this.requestModel.create({ endpoint: "",method:'GET',body:'' });
             console.log(a,'a')
             relationshipRequestId = String(a._id)
             // console.log(a.identifiers[0].id,'a')
         }
 
-        const b = await this.coverageModel.create({ name: name,nodeType:nodeType,pid:pid,relationshipRequestId:relationshipRequestId,creator: currentUser });
+        const b = await this.fileModel.create({ name: name,nodeType:nodeType,pid:pid,relationshipRequestId:relationshipRequestId,creator: currentUser });
 
         return { a, b };
     }
