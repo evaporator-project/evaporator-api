@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post, Req, Request} from '@nestjs/common';
+import {Body, Controller, Get, Post, Query, Req, Request} from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -13,10 +13,9 @@ export class AppController {
   }
 
   @Get('/test')
-  test(@Req() request: Request): any {
-    return {
-      msg:'test'
-    }
+  test(@Query() q): any {
+    console.log(q,'q')
+    return q
   }
 
   @Post('/test')
