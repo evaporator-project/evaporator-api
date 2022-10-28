@@ -44,6 +44,8 @@ export class Request {
     @Prop()
     method: string
     @Prop()
+    testScript: string
+    @Prop()
     params: {
         key: string;
         value: string;
