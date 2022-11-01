@@ -2,7 +2,8 @@
 import { FileSchema } from './schemas/file.schema';
 import {RequestSchema} from "./schemas/request.schema";
 import {WorkspaceSchema} from "./schemas/workspace.schema";
-
+// console.log(global.conf.datasource.mongodb.requestSchemaName)
+const {fileSchemaName,requestSchemaName,workspaceSchemaName} = global.conf.datasource.mongodb
 export const fileProviders = [
     {
         provide: 'MONGODB_CONNECTION_FileRepository',
@@ -10,7 +11,7 @@ export const fileProviders = [
             connection.model(
                 'file_model',
                 FileSchema,
-                'file',
+                fileSchemaName,
             ),
         inject: ['MONGODB_CONNECTION'],
     },
@@ -20,7 +21,7 @@ export const fileProviders = [
             connection.model(
                 'request_model',
                 RequestSchema,
-                'request',
+                requestSchemaName,
             ),
         inject: ['MONGODB_CONNECTION'],
     },
@@ -30,7 +31,7 @@ export const fileProviders = [
             connection.model(
                 'workspace_model',
                 WorkspaceSchema,
-                'workspace',
+                workspaceSchemaName,
             ),
         inject: ['MONGODB_CONNECTION'],
     },
