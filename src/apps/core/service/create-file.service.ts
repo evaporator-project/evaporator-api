@@ -28,7 +28,7 @@ export class CreateFileService {
               body: '',
           },
           testScript: '',
-          method: '',
+          method: 'GET',
           auth: {
           },
           endpoint: '',
