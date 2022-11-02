@@ -9,6 +9,22 @@ export class User {
     username: string
     @Prop()
     password: string
+
+    @Prop()
+    nickname: string
+    @Prop()
+    avatar: string
+
+    @Prop()
+    thRefreshToken: string
+    @Prop()
+    thAccessToken: string
+
+    @Prop()
+    email: string
+    @Prop()
+    thId: string
+
     @Prop()
     role: string[]
 

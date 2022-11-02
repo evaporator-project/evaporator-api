@@ -27,4 +27,13 @@ export class AuthController {
   ) {
     return this.authService.passwordLogin(reqBody)
   }
+
+  // user
+  @UseGuards(JwtAuthGuard)
+  @Get('/user')
+  async getUserinfo(@Request() request: { user: { id: number } }) {
+    console.log(request.user.id)
+
+    return this.authService.getUserinfo({ userId: request.user.id })
+  }
 }

@@ -11,7 +11,8 @@ export class GetCollectionTreeService {
     private requestModel: Model<RequestDocument>
   ) {}
   async invoke(reqBody) {
-    const files = await this.fileModel.find({}).then((res) =>
+    console.log(reqBody,'reqBody',reqBody.workspaceId)
+    const files = await this.fileModel.find({workspaceId: reqBody.workspaceId}).then((res) =>
       res.map((r) => ({
         id: String(r._id),
         name: r.name,
@@ -20,6 +21,8 @@ export class GetCollectionTreeService {
         relationshipRequestId: r.relationshipRequestId,
       }))
     );
+
+    console.log(files.map(i=>i.id))
 
     const combinationFiles = [];
     for (let i = 0; i < files.length; i++) {

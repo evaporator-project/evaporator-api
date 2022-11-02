@@ -10,6 +10,6 @@ export class ListWorkspaceService {
         private workspaceModel: Model<WorkspaceDocument>,
     ) {}
     async invoke(currentUser,reqBody) {
-        return this.workspaceModel.find({})
+        return this.workspaceModel.find({creator:currentUser})
     }
 }

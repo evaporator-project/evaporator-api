@@ -1,6 +1,6 @@
 // import { Connection } from 'mongoose';
 import { UserSchema } from './../schemas/user.schema';
-
+const {userSchemaName} = global.conf.datasource.mongodb
 export const userProviders = [
   {
     provide: 'MONGODB_CONNECTION_UserRepository',
@@ -8,7 +8,7 @@ export const userProviders = [
         connection.model(
             'user_model',
             UserSchema,
-            'user',
+            userSchemaName,
         ),
     inject: ['MONGODB_CONNECTION'],
   },

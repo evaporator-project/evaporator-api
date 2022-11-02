@@ -14,7 +14,7 @@ export class CreateFileService {
     console.log(currentUser, "currentUser");
     //判断类型1 2 3
 
-    const { nodeType, name, pid } = reqBody;
+    const { nodeType, name, pid,workspaceId } = reqBody;
     let a: any = {};
     let relationshipRequestId = "";
     // 请求 或者 eg
@@ -40,6 +40,7 @@ export class CreateFileService {
     }
 
     const b = await this.fileModel.create({
+        workspaceId:workspaceId,
       name: name,
       nodeType: nodeType,
       pid: pid,

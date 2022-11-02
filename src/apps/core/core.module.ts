@@ -13,6 +13,8 @@ import {DeleteFileService} from "./service/delete-file.service";
 import {UpdateFileService} from "./service/update-file.service";
 import {WorkspaceController} from "./controller/workspace.controller";
 import {ListWorkspaceService} from "./service/list-workspace.service";
+import {CreateWorkspaceService} from "./service/create-workspace.service";
+import {UpdateWorkspaceService} from "./service/update-workspace.service";
 
 @Module({
     imports: [DatabaseModule],
@@ -25,6 +27,8 @@ import {ListWorkspaceService} from "./service/list-workspace.service";
         DeleteFileService,
         UpdateFileService,
         ListWorkspaceService,
+        CreateWorkspaceService,
+        UpdateWorkspaceService,
         ...fileProviders,
     ],
 })

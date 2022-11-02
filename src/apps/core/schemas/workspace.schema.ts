@@ -8,6 +8,14 @@ class WorkspaceMember {
     memberId:string
 }
 
+class WorkspaceEnvironment {
+    name: string
+    variables: {
+        key: string
+        value: string
+    }[]
+}
+
 @Schema()
 export class Workspace {
     @Prop()
@@ -16,6 +24,8 @@ export class Workspace {
     creator: string
     @Prop()
     members: WorkspaceMember[]
+    @Prop()
+    environments: WorkspaceEnvironment[]
     @Prop({
         default:()=>new Date()
     })

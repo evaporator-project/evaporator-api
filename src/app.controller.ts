@@ -12,14 +12,19 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('/test')
-  test(@Query() q): any {
-    console.log(q,'q')
-    return q
-  }
-
-  @Post('/test')
-  testtest(@Req() request: Request,@Body() body): any {
-    return body
+  @Get('/base')
+  getBaseInfo(): any {
+    const {
+      clientId: thAppClientId,
+      redirectUri: thAppRedirectUri,
+      uri: thAppUri,
+    } = global.conf.gitlab.application
+    return {
+      thAppType: 'gitlab',
+      thAppClientId,
+      thAppRedirectUri,
+      thAppUri,
+      version:global.version
+    }
   }
 }

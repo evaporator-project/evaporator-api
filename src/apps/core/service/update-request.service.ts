@@ -17,7 +17,7 @@ export class UpdateRequestService {
     async invoke(params):Promise<any>{
         const s = JSON.parse(JSON.stringify(params))
         delete s.id
-        console.log(s,params)
+        // console.log(s,params)
         return this.requestModel.updateOne({_id:params.id},s)
     }
 }
