@@ -33,4 +33,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: zhangtao25/evaporator-api:${{ steps.extract_branch.outputs.branch }}
+          tags: zhangtao25/evaporator:${{ steps.extract_branch.outputs.branch }}

@@ -1,4 +1,4 @@
-FROM zhangtao25/evaporator:main as FrontEnd
+FROM zhangtao25/evaporator-ui:main as FrontEnd
 
 FROM node:14.16.0-alpine
 
