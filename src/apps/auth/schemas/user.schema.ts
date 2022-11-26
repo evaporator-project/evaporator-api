@@ -3,6 +3,12 @@ import { Document } from 'mongoose'
 
 export type UserDocument = User & Document
 
+class UserSettings {
+    accentColor: string
+    colorMode: string
+    language: string
+}
+
 @Schema()
 export class User {
     @Prop()
@@ -27,6 +33,9 @@ export class User {
 
     @Prop()
     role: string[]
+    
+    @Prop()
+    settings:UserSettings
 
     @Prop({
         default:()=>new Date()

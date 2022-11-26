@@ -8,10 +8,14 @@ import {
 } from '@nestjs/common'
 import { AuthService } from './auth.service'
 import { JwtAuthGuard } from './guards/jwt-auth.guard'
+import { UserService } from './user.service'
 
 @Controller()
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+      private readonly authService: AuthService,
+      private readonly userService: UserService
+  ) {}
 
 
   @Post('/oauth/token')
@@ -35,5 +39,11 @@ export class AuthController {
     console.log(request.user.id)
 
     return this.authService.getUserinfo({ userId: request.user.id })
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('/usersettings')
+  async userSettings(@Body() reqBody,@Request() req: { user: { id: number } }) {
+    return this.userService.userSettings(req.user.id, reqBody)
   }
 }

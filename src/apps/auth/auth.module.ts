@@ -9,6 +9,7 @@ import { DatabaseModule } from '../database/database.module'
 
 import { userProviders } from './providers/user.providers'
 import { AuthController } from './auth.controller'
+import {UserService} from "./user.service";
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AuthController } from './auth.controller'
   ],
   controllers: [AuthController],
   providers: [
+      UserService,
     AuthService,
     LocalStrategy,
     JwtStrategy,
