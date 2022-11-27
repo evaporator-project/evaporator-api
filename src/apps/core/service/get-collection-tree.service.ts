@@ -11,7 +11,7 @@ export class GetCollectionTreeService {
     private requestModel: Model<RequestDocument>
   ) {}
   async invoke(reqBody) {
-    console.log(reqBody,'reqBody',reqBody.workspaceId)
+    // console.log(reqBody,'reqBody',reqBody.workspaceId)
     const files = await this.fileModel.find({workspaceId: reqBody.workspaceId}).then((res) =>
       res.map((r) => ({
         id: String(r._id),
@@ -19,10 +19,11 @@ export class GetCollectionTreeService {
         nodeType: r.nodeType,
         pid: r.pid,
         relationshipRequestId: r.relationshipRequestId,
+        sortIndex:r.sortIndex
       }))
     );
 
-    console.log(files.map(i=>i.id))
+    // console.log(files.map(i=>i.id))
 
     const combinationFiles = [];
     for (let i = 0; i < files.length; i++) {
@@ -52,6 +53,7 @@ export class GetCollectionTreeService {
             title: item.name,
             children: arrToTree(arr, item.id),
           });
+          newArr.sort((a,b)=>a.sortIndex - b.sortIndex)
         }
       });
       return newArr;

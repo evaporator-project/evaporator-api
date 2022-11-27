@@ -15,6 +15,7 @@ import {WorkspaceController} from "./controller/workspace.controller";
 import {ListWorkspaceService} from "./service/list-workspace.service";
 import {CreateWorkspaceService} from "./service/create-workspace.service";
 import {UpdateWorkspaceService} from "./service/update-workspace.service";
+import {MoveFileService} from "./service/move-file.service";
 
 @Module({
     imports: [DatabaseModule],
@@ -29,6 +30,7 @@ import {UpdateWorkspaceService} from "./service/update-workspace.service";
         ListWorkspaceService,
         CreateWorkspaceService,
         UpdateWorkspaceService,
+        MoveFileService,
         ...fileProviders,
     ],
 })

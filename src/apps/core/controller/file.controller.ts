@@ -13,6 +13,7 @@ import { RetrieveRequestService } from "../service/retrieve-request.service";
 import { UpdateRequestService } from "../service/update-request.service";
 import { DeleteFileService } from "../service/delete-file.service";
 import { UpdateFileService } from "../service/update-file.service";
+import { MoveFileService } from "../service/move-file.service";
 // import {RetrieveRequestService} from "../../request/service/retrieve-request.service";
 
 @Controller()
@@ -23,7 +24,8 @@ export class FileController {
     private retrieveRequestService: RetrieveRequestService,
     private updateRequestService: UpdateRequestService,
     private deleteFileService: DeleteFileService,
-    private updateFileService: UpdateFileService
+    private updateFileService: UpdateFileService,
+    private moveFileService: MoveFileService
   ) {}
   @UseGuards(JwtAuthGuard)
   @Post("createfile")
@@ -56,5 +58,12 @@ export class FileController {
   @Post("updatefile")
   updateFile(@Body() reqBody, @Request() req):Promise<any> {
     return this.updateFileService.invoke(req.user.id, reqBody);
+  }
+
+
+  @UseGuards(JwtAuthGuard)
+  @Post("movefile")
+  moveFile(@Body() reqBody, @Request() req):Promise<any> {
+    return this.moveFileService.invoke(req.user.id, reqBody);
   }
 }

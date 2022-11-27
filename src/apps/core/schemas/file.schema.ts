@@ -12,6 +12,8 @@ export class File {
     @Prop()
     nodeType: number
     @Prop()
+    sortIndex: number
+    @Prop()
     relationshipRequestId: string
     @Prop()
     workspaceId: string

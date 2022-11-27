@@ -46,6 +46,7 @@ export class CreateFileService {
       pid: pid,
       relationshipRequestId: relationshipRequestId,
       creator: currentUser,
+        sortIndex:0
     });
 
     return { a, b };
