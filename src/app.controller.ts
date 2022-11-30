@@ -1,5 +1,6 @@
 import {Body, Controller, Get, Post, Query, Req, Request} from '@nestjs/common';
 import { AppService } from './app.service';
+import { runTestScript } from './sandbox';
 
 @Controller()
 export class AppController {
@@ -26,5 +27,18 @@ export class AppController {
       thAppUri,
       version:global.version
     }
+  }
+
+  @Post('/sandbox')
+  ge(@Body() body){
+    const {testScript,response} = body
+    return runTestScript(testScript, { body: response.data, headers: [], status: 200 }).then(
+        (testDescriptor) => {
+          return {
+            response: response,
+            testResult: testDescriptor,
+          };
+        },
+    );
   }
 }
