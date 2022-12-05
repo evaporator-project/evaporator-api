@@ -1,6 +1,6 @@
 FROM zhangtao25/evaporator-ui:main as FrontEnd
 
-FROM node:14.16.0-alpine
+FROM node:16.14.0-alpine
 
 MAINTAINER wr_zhang25
 
