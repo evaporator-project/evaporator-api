@@ -122,6 +122,6 @@ export class AuthService {
     })
   }
   async getUserinfo({ userId }) {
-    return this.userModel.findOne({ id: userId })
+    return this.userModel.findOne({ _id: userId })
   }
 }

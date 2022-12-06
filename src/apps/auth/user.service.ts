@@ -11,6 +11,6 @@ export class UserService {
         private userModel: Model<UserDocument>,
     ) {}
     async userSettings(currentUser, reqBody):Promise<any> {
-        return this.userModel.updateOne({ id: currentUser },reqBody)
+        return this.userModel.updateOne({ _id: currentUser },reqBody)
     }
 }
