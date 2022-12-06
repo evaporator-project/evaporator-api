@@ -10,6 +10,11 @@ export class ListWorkspaceService {
         private workspaceModel: Model<WorkspaceDocument>,
     ) {}
     async invoke(currentUser,reqBody) {
-        return this.workspaceModel.find({creator:currentUser})
+        const membersWorkspaces = await this.workspaceModel.find({members:{$elemMatch:{role:"admin",memberId:currentUser}}})
+        const selfWorkspaces = await this.workspaceModel.find({creator:currentUser})
+        return [
+            ...membersWorkspaces,
+            ...selfWorkspaces
+        ]
     }
 }
