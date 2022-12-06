@@ -16,6 +16,8 @@ import {ListWorkspaceService} from "./service/list-workspace.service";
 import {CreateWorkspaceService} from "./service/create-workspace.service";
 import {UpdateWorkspaceService} from "./service/update-workspace.service";
 import {MoveFileService} from "./service/move-file.service";
+import {RetrieveWorkspaceService} from "./service/retrieve-workspace.service";
+import {DeleteWorkspaceService} from "./service/delete-workspace.service";
 
 @Module({
     imports: [DatabaseModule],
@@ -31,6 +33,8 @@ import {MoveFileService} from "./service/move-file.service";
         CreateWorkspaceService,
         UpdateWorkspaceService,
         MoveFileService,
+        RetrieveWorkspaceService,
+        DeleteWorkspaceService,
         ...fileProviders,
     ],
 })

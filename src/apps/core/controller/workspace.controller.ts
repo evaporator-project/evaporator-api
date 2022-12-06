@@ -16,14 +16,20 @@ import { UpdateFileService } from "../service/update-file.service";
 import { ListWorkspaceService } from "../service/list-workspace.service";
 import { CreateWorkspaceService } from "../service/create-workspace.service";
 import { UpdateWorkspaceService } from "../service/update-workspace.service";
+import {RetrieveWorkspaceService} from "../service/retrieve-workspace.service";
+import { DeleteWorkspaceService } from "../service/delete-workspace.service";
 // import {RetrieveRequestService} from "../../request/service/retrieve-request.service";
 
 @Controller()
 export class WorkspaceController {
   constructor(
     private listWorkspaceService: ListWorkspaceService,
+    private retrieveWorkspaceService: RetrieveWorkspaceService,
     private createWorkspaceService: CreateWorkspaceService,
-    private updateWorkspaceService: UpdateWorkspaceService
+    private updateWorkspaceService: UpdateWorkspaceService,
+    private deleteWorkspaceService: DeleteWorkspaceService
+
+
   ) {}
   @UseGuards(JwtAuthGuard)
   @Post("listworkspace")
@@ -40,5 +46,17 @@ export class WorkspaceController {
   @Post("updateworkspace")
   updateWorkspace(@Request() req, @Body() reqBody): Promise<any> {
     return this.updateWorkspaceService.invoke(req.user.id, reqBody);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post("retrieveworkspace")
+  retrieveWorkspace(@Request() req, @Body() reqBody): Promise<any> {
+    return this.retrieveWorkspaceService.invoke(req.user.id, reqBody);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post("deleteworkspace")
+  deleteWorkspace(@Request() req, @Body() reqBody): Promise<any> {
+    return this.deleteWorkspaceService.invoke(req.user.id, reqBody);
   }
 }
